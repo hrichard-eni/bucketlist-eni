@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Bucketlist {% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+    {% block ajoutHead %}{% endblock %}
 </head>
 <body>
 <header>
     <h1>{% block header %} Bucketlist {% endblock %}</h1>
+    <a href="{{ path('main_home') }}" title="Go back home !">
     <img src="{{ asset('img/logo.png') }}" alt="logo Bucketlist">
-    <nav><a href="{{ path('main_home') }}"><p>Go back home</p></a>
-    <a href="{{ path('wish_aboutus') }}"><p>About us</p></a>
-        <a href="{{ path('wish_list') }}"><p>Liste des idées</p></a>
+    </a>
+    <nav><a href="{{ path('main_home') }}" title="Go back home !"><p>Go back home</p></a>
+    <a href="{{ path('wish_aboutus') }}" title="About us !"><p>About us</p></a>
+        <a href="{{ path('wish_list') }}" title="Liste des idées !"><p>Liste des idées</p></a>
     </nav>
 </header>
 <main>{% block main %}{% endblock %}
 </main>
-<footer>{% block footer %} ©Bucketlist - {{ "now"|date("Y")}}  {% endblock %}</footer>
+<footer>{% block footer %} ©Bucketlist - {{ "now"|date("Y")}}  {% endblock %}
+
+<a href="{{ path('main_mentions_legales') }}" title="Nos mentions pas très légales">Mentions légales</a>
+</footer>
 </body>
 </html>
