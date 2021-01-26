@@ -1,1 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
 <h1>coucou depuis twig</h1>
+
+{#
+un commentaire
+multiligne
+ #}
+
+<!-- délimite les instructions (if, boucle, blocs etc) -->
+
+{# Créer des variables #}
+{% set product = "computer" %}
+{% set colors = ["brown", "pink", "yellow"] %}
+{# Créer un objet #}
+{%  set movie = {
+ "title":"Forrest Gump",
+ "year": 1990
+} %}
+
+<!-- équivalent d'écho -->
+
+{# Affiche les variables #}
+{{ product }}
+
+{# boucle sur un tableau #}
+{% for c in colors %}
+<div>{{ c }}</div>
+{% endfor %}
+
+{# boucle sur un objet #}
+{% for key, val in movie %}
+ <div>{{ key }} : {{ val }}</div>
+{% endfor %}
+
+{# A l'intérieur de la boucle on a accès à un objet qui s'appelle loop, qui permet d'effectuer des commandes par exemple loop.last #}
+
+{#  conditions #}
+
+{% if colors|length > 3 %}
+<div>Plus de 3 couleurs</div>
+{% else %}
+ <div>3 ou moins</div>
+{% endif %}
+
+{% endblock %}
