@@ -9,18 +9,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class WishController extends AbstractController
 {
     /**
-     * @Route("/list", name="main_list")
+     * @Route("/list", name="wish_list")
      */
     public function list()
     {
-        return $this->render('main/list.html.twig');
+        return $this->render('wish/list.html.twig');
     }
 
     /**
-     * @Route("/detail", name="main_detail")
+     * @Route("/detail/{id}", name="wish_detail", methods={"GET"}, requirements={"id": "[0-9]+"})
      */
-    public function detail()
+    public function detail($id): Response
     {
-        return $this->render('main/detail.html.twig');
+        return $this->render('wish/detail.html.twig', ["id"=> $id]);
     }
 }

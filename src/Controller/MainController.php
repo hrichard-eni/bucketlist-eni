@@ -19,11 +19,11 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route ("/about-us", name="main_aboutus")
+     * @Route ("/about-us", name="wish_aboutus", methods={"GET", "POST"})
      */
 
     public function aboutus()
     {
-        return $this->render('main/aboutus.html.twig');
+        return $this->render('wish/aboutus.html.twig');
     }
 }
