@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block ajoutHead %}
-    <script src="/public/scripts/javascript.js"></script>
+    <script src="{{ asset('scripts/javascript.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -9,6 +9,8 @@
 
     <input id="button" type="button" value="Est ce que ça marche ?"
            onclick="init()">
+
+    <button onclick="init()">Test</button>
 
 {% endblock %}
 
