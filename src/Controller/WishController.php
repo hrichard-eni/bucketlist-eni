@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Wish;
+use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,19 +12,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class WishController extends AbstractController
 {
     /**
-     * @Route("/list", name="wish_list")
+     * @Route("/list/", name="wish_list", methods={"GET"})
      */
-    public function list()
+    public function list(WishRepository $wishRepository)
     {
-        return $this->render('wish/list.html.twig');
+        $wishes = $wishRepository->findBy(["isPublished"=>true],["dateCreated" =>"DESC"]);
+
+        return $this->render('wish/list.html.twig', ["wishes"=> $wishes]);
     }
 
     /**
-     * @Route("/detail/{id}", name="wish_detail", methods={"GET"}, requirements={"id": "[0-9]+"})
+     * @Route("/detail/{id}", name="wish_detail", methods={"GET"}, requirements={"id":"\d+"})
      */
-    public function detail($id): Response
+    public function detail(WishRepository $wishRepository, $id)
     {
-        return $this->render('wish/detail.html.twig', ["id"=> $id]);
+        $wishSelect = $wishRepository->find($id);
+
+        return $this->render('wish/detail.html.twig', ["wishSelect"=>$wishSelect]);
     }
 
     /**

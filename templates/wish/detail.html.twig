@@ -6,6 +6,9 @@
 
 {% block main %}
 <h1>Détails</h1>
-    {{ id }}
+    <p>{{ wishSelect.title }}</p>
+    <p>{{ wishSelect.description }}</p>
+    <p>{{ wishSelect.author }}</p>
+    <p>{{ wishSelect.dateCreated|date("m/d/Y H:i:s") }}</p>
 {% endblock %}
 
