@@ -74,8 +74,12 @@ class WishController extends AbstractController
     public function add()
     {
         $form = $this->createForm(WishFormType::class);
+        $faker = \Faker\Factory::create("fr_FR");
+        $bidon = new Wish();
+        $bidon->setTitle($faker->name);
+        $bidon->setDescription($faker->paragraph(5));
         return $this->render('wish/add.html.twig',
-            ["wish_form" => $form->createView()]);
+            ["wish_form" => $form->createView(), "bidon" => $bidon]);
 
     }
 

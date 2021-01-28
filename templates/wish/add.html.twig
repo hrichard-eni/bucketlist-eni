@@ -8,6 +8,39 @@
 <h1>Ajouter une nouvelle idée</h1>
     <div>
         {{ form_start(wish_form) }}
+        <div class="group">
+            <label for="{{ field_name(wish_form.title) }}">Titre de l'idée</label>
+            <input type="text"
+                   id="{{ field_name(wish_form.title) }}"
+                   name="{{ field_name(wish_form.title) }}"
+                   value="{{ field_value(wish_form.title) }}"
+                   placeholder="{{ field_label(bidon.title) }}"
+                   class="form-control"
+            >
+        </div>
+
+        <div class="group">
+            <label for="{{ field_name(wish_form.description) }}">Description de l'idée</label>
+            <input type="text"
+                   id="{{ field_name(wish_form.description) }}"
+                   name="{{ field_name(wish_form.description) }}"
+                   value="{{ field_value(wish_form.description) }}"
+                   placeholder="{{ field_label(bidon.description) }}"
+                   class="form-control"
+            >
+        </div>
+
+        <div class="group">
+            <label for="{{ field_name(wish_form.author) }}">Titre de l'idée</label>
+            <input type="text"
+                   id="{{ field_name(wish_form.author) }}"
+                   name="{{ field_name(wish_form.author) }}"
+                   value="{{ field_value(wish_form.author) }}"
+                   placeholder="{{ field_label(bidon.author) }}"
+                   class="form-control"
+            >
+        </div>
+
         {{ form_widget(wish_form) }}
         <button>Envoyer</button>
         {{ form_end(wish_form) }}
