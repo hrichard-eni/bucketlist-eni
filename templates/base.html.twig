@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Bucketlist {% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <!-- BOOTSTRAP -> <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">-->
+    <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
     {% block ajoutHead %}{% endblock %}
 </head>
 <body>
 <header>
+    <div class="container">
+        <div class="row">
     <div id="logoTitre">
         <a href="{{ path('main_home') }}" title="Go back home !">
             <img src="{{ asset('img/logo.png') }}" alt="logo Bucketlist">
@@ -25,6 +27,8 @@
         <a class="lienNav" href="{{ path('wish_list') }}" title="Liste des idées !"><p>Liste des idées</p></a>
         <a class="lienNav" href="{{ path('wish_add') }}" title="Ajouter une idée !"><p>Ajouter une idée</p></a>
     </nav>
+        </div>
+    </div>
 </header>
 <main>{% block main %}{% endblock %}
 </main>

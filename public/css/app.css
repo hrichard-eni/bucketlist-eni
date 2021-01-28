@@ -20,6 +20,17 @@ body {
     display:flex;
 }
 
+nav {
+    text-align:center;
+}
+
+a.lienNav {
+    font-size: 1.5em;
+    color:darkblue;
+    text-transform:uppercase;
+    text-decoration:none;
+}
+
 .lienNav {
     margin-right:1em;
 }
