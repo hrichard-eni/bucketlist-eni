@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block main %}
+<h1>Ajouter une nouvelle idée</h1>
+    <div>
+        {{ form_start(wish_form) }}
+        {{ form_widget(wish_form) }}
+        <button>Envoyer</button>
+        {{ form_end(wish_form) }}
+    </div>
+{% endblock %}
+

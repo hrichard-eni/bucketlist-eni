@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Wish;
+use App\Form\WishFormType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,6 +28,12 @@ class WishController extends AbstractController
     public function detail(WishRepository $wishRepository, $id)
     {
         $wishSelect = $wishRepository->find($id);
+
+        if (!$wishSelect) {
+            //déclencher une 404
+            throw $this->createNotFoundException('This wish is gone.');
+
+        }
 
         return $this->render('wish/detail.html.twig', ["wishSelect"=>$wishSelect]);
     }
@@ -60,4 +67,18 @@ class WishController extends AbstractController
 
         return $this->render('wish/test.html.twig');
     }
+
+    /**
+     * @Route("/add", name="wish_add")
+     */
+    public function add()
+    {
+        $form = $this->createForm(WishFormType::class);
+        return $this->render('wish/add.html.twig',
+            ["wish_form" => $form->createView()]);
+
+    }
+
+
+
 }
