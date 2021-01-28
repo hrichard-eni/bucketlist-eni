@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\WishRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=WishRepository::class)
@@ -18,21 +19,46 @@ class Wish
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Votre idée doit avoir un titre")
+     * @Assert\Length(
+     *     min=10,
+     *     max=250,
+     *     minMessage="Votre titre doit faire au moins 10 caractères",
+     *     maxMessage="Votre titre ne doit pas dépasser 250 caractères"
+     * )
+     *
      * @ORM\Column(type="string", length=250)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank(message="Votre idée doit avoir une description")
+     * @Assert\Length(
+     *     min=10,
+     *     max=1500,
+     *     minMessage="Votre description doit faire au moins 10 caractères",
+     *     maxMessage="Votre description ne doit pas dépasser 1500 caractères"
+     * )
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank(message="Indiquez votre nom d'auteur svp")
+     * @Assert\Length(
+     *     min=3,
+     *     max=50,
+     *     minMessage="Votre nom d'auteur doit faire au moins 3 caractères",
+     *     maxMessage="Votre nom d'auteur ne doit pas dépasser 50 caractères"
+     * )
+     *
      * @ORM\Column(type="string", length=50)
      */
     private $author;
 
     /**
+     *
+     *
      * @ORM\Column(type="boolean")
      */
     private $isPublished;

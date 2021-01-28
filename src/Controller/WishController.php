@@ -7,6 +7,7 @@ use App\Form\WishFormType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -71,14 +72,34 @@ class WishController extends AbstractController
     /**
      * @Route("/add", name="wish_add")
      */
-    public function add()
+    public function add(Request $request, EntityManagerInterface $entityManager)
     {
+        /* GENERER DES VALEURS ALEATOIRES SUR LE FORMULAIRE
+
         $faker = \Faker\Factory::create("fr_FR");
         $bidon = new Wish();
-        $bidon->setTitle($faker->paragraph);
+        $bidon->setTitle($faker->jobTitle);
         $bidon->setDescription($faker->paragraph(5));
         $bidon->setAuthor($faker->name);
-        $form = $this->createForm(WishFormType::class, $bidon);
+        */
+
+        $wish = new Wish();
+        #Ajouter $bidon en paramètre pour générer les valeurs aléatoires
+        $form = $this->createForm(WishFormType::class, $wish);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $wish->setDateCreated(new \DateTime());
+            $wish->setIsPublished(true);
+
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Nouvelle idée ajoutée !');
+
+            return $this->redirectToRoute('wish_detail', ['id' => $wish->getId()]);
+        }
 
         return $this->render('wish/add.html.twig',
             ["wish_form" => $form->createView()]);
