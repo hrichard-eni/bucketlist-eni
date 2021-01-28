@@ -12,14 +12,16 @@
 </head>
 <body>
 <header>
+    <div id="logoTitre">
+        <a href="{{ path('main_home') }}" title="Go back home !">
+            <img src="{{ asset('img/logo.png') }}" alt="logo Bucketlist">
+        </a>
     <h1>{% block header %} Bucketlist {% endblock %}</h1>
-    <a href="{{ path('main_home') }}" title="Go back home !">
-    <img src="{{ asset('img/logo.png') }}" alt="logo Bucketlist">
-    </a>
-    <nav><a href="{{ path('main_home') }}" title="Go back home !"><p>Go back home</p></a>
-    <a href="{{ path('wish_aboutus') }}" title="About us !"><p>About us</p></a>
-        <a href="{{ path('wish_list') }}" title="Liste des idées !"><p>Liste des idées</p></a>
-        <a href="{{ path('wish_add') }}" title="Ajouter une idée !"><p>Ajouter une idée</p></a>
+    </div>
+    <nav><a class="lienNav" href="{{ path('main_home') }}" title="Go back home !"><p>Go back home</p></a>
+    <a class="lienNav" href="{{ path('wish_aboutus') }}" title="About us !"><p>About us</p></a>
+        <a class="lienNav" href="{{ path('wish_list') }}" title="Liste des idées !"><p>Liste des idées</p></a>
+        <a class="lienNav" href="{{ path('wish_add') }}" title="Ajouter une idée !"><p>Ajouter une idée</p></a>
     </nav>
 </header>
 <main>{% block main %}{% endblock %}

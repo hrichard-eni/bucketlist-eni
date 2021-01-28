@@ -1,16 +1,28 @@
+header, footer {
+    display:block;
+}
+
+footer {
+    position:absolute;
+    text-align:center;
+    bottom:0;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+}
+
 body {
     font-family: Calibri, serif;
     background-color: #777799;
-    display: flex;
 }
 
-html, body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
+#logoTitre, nav {
+    display:flex;
 }
 
-
+.lienNav {
+    margin-right:1em;
+}
 /* form */
 label {
     display: block;
