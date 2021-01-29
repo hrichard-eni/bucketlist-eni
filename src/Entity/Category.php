@@ -6,6 +6,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -25,6 +26,13 @@ class Category
     private $name;
 
     /**
+     * @Assert\NotBlank(message="Le nom de la catégorie doit être renseignée")
+     * @Assert\Length(
+     *     min=3,
+     *     max=250,
+     *     minMessage="Votre catégorie doit faire au moins 10 caractères",
+     *     maxMessage="Votre catégorie ne doit pas dépasser 250 caractères"
+     *
      * @ORM\OneToMany(targetEntity=Wish::class, mappedBy="category")
      */
     private $wishes;
