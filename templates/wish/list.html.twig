@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block main %}
+    <div class="container">
+        <div class="row">
     <h1>Liste</h1>
 
     <ul>
@@ -12,5 +14,7 @@
             <li><a href="{{ path('wish_detail', {id:wish.id}) }}">{{wish.title}}</a></li>
         {% endfor %}
     </ul>
+        </div>
+    </div>
 {% endblock %}
 

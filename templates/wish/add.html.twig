@@ -10,38 +10,8 @@
 <h1 class="col-5">Ajouter une nouvelle idée</h1>
     <div id="formWish">
 
-        {{ form_start(wish_form) }}
-        <div class="col-6">
-            <label for="{{ field_name(wish_form.title) }}">Titre de l'idée</label>
-            <input type="text"
-                   id="{{ field_name(wish_form.title) }}"
-                   name="{{ field_name(wish_form.title) }}"
-                   value="{{ field_value(wish_form.title) }}"
-                   class="form-control"
-            >
-        </div>
+        {{ form(wish_form) }}
 
-        <div class="col-10">
-            <label for="{{ field_name(wish_form.description) }}">Description de l'idée</label>
-            <textarea
-                    id="{{ field_name(wish_form.description) }}"
-                    name="{{ field_name(wish_form.description) }}"
-                    class="form-control"
-            >{{ field_value(wish_form.description) }}</textarea>
-
-
-        </div>
-
-        <div class="col-6">
-            <label for="{{ field_name(wish_form.author) }}">Auteur de l'idée</label>
-            <input type="text"
-                   id="{{ field_name(wish_form.author) }}"
-                   name="{{ field_name(wish_form.author) }}"
-                   value="{{ field_value(wish_form.author) }}"
-                   class="form-control"
-            >
-        </div>
-        {{ form_end(wish_form) }}
             </div>
         </div>
     </div>

@@ -31,6 +31,13 @@ a.lienNav {
     text-decoration:none;
 }
 
+li, a {
+    text-decoration:none;
+    font-size: 1.2em;
+    color:darkslategrey;
+    list-style-type:none;
+}
+
 .lienNav {
     margin-right:1em;
 }
@@ -44,3 +51,6 @@ textarea {
     margin-bottom: 15px;
 }
 
+#wish_form_category {
+    margin-bottom: 15px;
+}

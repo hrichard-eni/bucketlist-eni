@@ -5,10 +5,15 @@
 {% endblock %}
 
 {% block main %}
+    <div class="container">
+        <div class="row">
 <h1>Détails</h1>
-    <p>{{ wishSelect.title }}</p>
-    <p>{{ wishSelect.description }}</p>
-    <p>{{ wishSelect.author }}</p>
-    <p>{{ wishSelect.dateCreated|date("m/d/Y H:i:s") }}</p>
+    <p><strong>Titre : </strong>{{ wishSelect.title }}</p>
+    <p><strong>Description : </strong>{{ wishSelect.description }}</p>
+    <p><strong>Auteur : </strong>{{ wishSelect.author }}</p>
+    <p><strong>Catégorie : </strong>{{ wishSelect.category.name }}</p>
+    <p><strong>Date de création : </strong>{{ wishSelect.dateCreated|date("m/d/Y H:i:s") }}</p>
+        </div>
+    </div>
 {% endblock %}
 
