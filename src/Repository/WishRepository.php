@@ -19,6 +19,16 @@ class WishRepository extends ServiceEntityRepository
         parent::__construct($registry, Wish::class);
     }
 
+    public function findCategorizedWishes(): array
+    {
+        $dql = "SELECT w FROM App\Entity\Wish w";
+
+        $query = $this->getEntityManager()->createQuery($dql);
+        $wishes = $query->getResult();
+
+        return $wishes;
+    }
+
     // /**
     //  * @return Wish[] Returns an array of Wish objects
     //  */

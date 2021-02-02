@@ -32,6 +32,7 @@ class Category
      *     max=250,
      *     minMessage="Votre catégorie doit faire au moins 10 caractères",
      *     maxMessage="Votre catégorie ne doit pas dépasser 250 caractères"
+     * )
      *
      * @ORM\OneToMany(targetEntity=Wish::class, mappedBy="category")
      */
