@@ -6,6 +6,7 @@ use App\Entity\Wish;
 use App\Form\WishFormType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,6 +71,7 @@ class WishController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/add", name="wish_add")
      */
     public function add(Request $request, EntityManagerInterface $entityManager)
@@ -84,6 +86,8 @@ class WishController extends AbstractController
         */
 
         $wish = new Wish();
+        $user = $this->getUser();
+        $wish->setAuthor($user->getPseudo());
         #Ajouter $bidon en paramètre pour générer les valeurs aléatoires
         $form = $this->createForm(WishFormType::class, $wish);
         $form->handleRequest($request);

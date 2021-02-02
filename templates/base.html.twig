@@ -25,13 +25,25 @@
     <nav><a class="lienNav" href="{{ path('main_home') }}" title="Go back home !"><p>Go back home</p></a>
     <a class="lienNav" href="{{ path('wish_aboutus') }}" title="About us !"><p>About us</p></a>
         <a class="lienNav" href="{{ path('wish_list') }}" title="Liste des idées !"><p>Liste des idées</p></a>
+
+        {% if (app.user) %}
         <a class="lienNav" href="{{ path('wish_add') }}" title="Ajouter une idée !"><p>Ajouter une idée</p></a>
         <a class="lienNav" href="{{ path('app_logout') }}" title="Se déconnecter !"><p>Se déconnecter</p></a>
+        {% else %}
+        <a class="lienNav" href="{{ path('app_login') }}" title="Se connecter !"><p>Connexion</p></a>
+        <a class="lienNav" href="{{ path('app_register') }}" title="S'inscrire !"><p>Inscription</p></a>
+        {% endif %}
+
     </nav>
         </div>
     </div>
 </header>
 <main>
+
+    {% if (app.user) %}
+    <strong>Hello {{ app.user.pseudo }} !!</strong>
+    {% endif %}
+
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="alert alert-{{ label }}">

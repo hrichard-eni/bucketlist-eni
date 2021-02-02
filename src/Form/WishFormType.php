@@ -3,6 +3,7 @@
 namespace App\Form;
 
 
+use App\Entity\User;
 use App\Entity\Wish;
 use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -15,6 +16,8 @@ class WishFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = $this->getUser();
+
         $builder
             ->add('title')
             ->add('description')
@@ -35,5 +38,9 @@ class WishFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Wish::class,
         ]);
+    }
+
+    private function getUser()
+    {
     }
 }
