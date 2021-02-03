@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Censure\Censurator;
 use App\Entity\Wish;
 use App\Form\WishFormType;
 use App\Repository\WishRepository;
@@ -74,7 +75,7 @@ class WishController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @Route("/add", name="wish_add")
      */
-    public function add(Request $request, EntityManagerInterface $entityManager)
+    public function add(Request $request, EntityManagerInterface $entityManager, Censurator $censurator)
     {
         /* GENERER DES VALEURS ALEATOIRES SUR LE FORMULAIRE
 
@@ -96,6 +97,8 @@ class WishController extends AbstractController
 
             $wish->setDateCreated(new \DateTime());
             $wish->setIsPublished(true);
+
+            $wish->setDescription($censurator->purify($wish->getDescription()));
 
             $entityManager->persist($wish);
             $entityManager->flush();
